@@ -12,10 +12,10 @@ const Form = ({ onStockData }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     axios
-      .get('/api', {
-        params: userData
+      .get("http://localhost:8080/stock", {
+        params: userData,
       })
       .then((response) => onStockData(response.data));
     // axios
@@ -33,7 +33,6 @@ const Form = ({ onStockData }) => {
         onSubmit={submitHandler}
         className="flex flex-col justify-center gap-y-4"
       >
-        Stock Ticker:
         <input
           type="text"
           name="ticker"

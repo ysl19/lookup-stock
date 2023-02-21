@@ -12,17 +12,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (request, response) => {
   console.log('connecting to homepage');
-  response.json(data);
+ 
 });
 
-app.get('/api', (request, response) => {
+app.get('/stock', (request, response) => {
   const { ticker, date } = request.query;
   
-  const polyUrl = `https://api.polygon.io/v1/open-close/AAPL/2023-02-10?adjusted=true&apiKey=7EGJa7g4jknAsOzAVg7lvnMXYJwSIRol`
+  const polyUrl = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${date}/${date}?apiKey=7EGJa7g4jknAsOzAVg7lvnMXYJwSIRol`
   axios.get(polyUrl)
-    .then(response => {
-      const data = response.data;
-      response.json(data);
+    .then(polyData => {
+      const stockData = polyData.data.results[0];
+      const {o, h, l, c, v} = stockData;
+      response.json({
+        ticker,
+        date,
+        open: o.toFixed(2),
+        high: h.toFixed(2),
+        low: l.toFixed(2),
+        close: c.toFixed(2),
+        volume: v.toFixed(2)
+      })
+      
     })
     .catch(error => {
       console.log(error);

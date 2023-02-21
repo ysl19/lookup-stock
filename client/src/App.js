@@ -14,7 +14,7 @@ const App = () => {
   }
   
   return (
-    <div>
+    <div className="w-1/2 m-auto">
       <Wrapper>
         <div className="w-1/2 m-auto flex flex-col justify-center items-center">
           <h1 className="text-2xl">Look up Stock Info</h1>
@@ -26,6 +26,7 @@ const App = () => {
       <Wrapper>
         <StockInfo stockData={stockData}/>
       </Wrapper>
+      
     </div>
   );
 };
