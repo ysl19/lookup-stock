@@ -10,4 +10,5 @@ React.js
 Express.js
 Node.js
 Javascript
+Tailwind css
 
