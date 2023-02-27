@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (request, response) => {
   console.log('connecting to homepage');
- 
 });
 
 app.get('/stock', (request, response) => {

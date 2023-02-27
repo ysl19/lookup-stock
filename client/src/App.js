@@ -1,33 +1,19 @@
-import StockInfo from "./components/StockInfo";
-import Form from "./components/Form";
-import Wrapper from "./components/Wrapper";
-
-import { useState } from 'react'
-
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./views/Home";
+import Contact from './views/Contact';
+import About from './views/About';
 
 const App = () => {
-  const [stockData, setStockData] = useState(null);
-
-  const handleStockData = (data) => {
-    setStockData(data);
-  }
-  
   return (
-    <div className="w-1/2 m-auto">
-      <Wrapper>
-        <div className="w-1/2 m-auto flex flex-col justify-center items-center">
-          <h1 className="text-2xl">Look up Stock Info</h1>
-
-          <Form onStockData={handleStockData}></Form>
-        </div>
-      </Wrapper>
-
-      <Wrapper>
-        <StockInfo stockData={stockData}/>
-      </Wrapper>
-      
-    </div>
+    <BrowserRouter>
+    <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="/about" element={<About />}></Route>
+        <Route exact path="/contact" element={<Contact />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

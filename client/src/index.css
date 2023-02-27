@@ -6,3 +6,16 @@
 body {
   background-color: rgb(135, 190, 230);
 }
+
+.nav-link{
+  @apply px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ;
+}
+
+.nav-link-icon{
+  @apply text-lg leading-snug text-white opacity-75 pr-1;
+}
+
+.active{
+  @apply text-white underline
+}
+
