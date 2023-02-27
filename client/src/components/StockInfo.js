@@ -9,7 +9,7 @@ const StockInfo = ({ stockData }) => {
   return (
     
     <Wrapper>
-      <ul>
+      <ul className="flex flex-col items-center justify-center">
         <li>Symbol : {ticker}</li>
         <li>Date: {date} </li>
         <li>Open : {open}</li>
